@@ -3,10 +3,18 @@
     <div class ="row">
         <div class="col">
             <h1>Listado Personas</h1>
+            <label>Nombre Persona</label>
             <!-- Asociamos la propiedad disabled con una propiedad del .ts, disabled va a depender del valor de agregarPersona que es un atributo-->
+            <input
+            type="text"
+            class="form-control"
+            (input)="onModificarPersona($event)">
+            
             <button class="btn btn-primary" 
-            [disabled]="!agregarPersona">Agrear Persona</button>
-           
+            [disabled]="!agregarPersona"
+            (click)=onCrearPersona()>Agrear Persona</button>
+            {{agregarPersonaStatus}}
+           Persona Ingresada: {{tituloPersona}}
         </div>        
     </div>
 </div>
