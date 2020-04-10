@@ -12,7 +12,7 @@
             <div *ngIf="personaCreada; else sinPersona">
                 
                <div *ngFor="let persona of arrayPersonas; let i = index">
-                  Nombre: {{persona.nombrePersona}} {{persona.apellidoPersona}} Edad: {{persona.edad}}
+                {{i+1}} Nombre: {{persona.nombrePersona}} {{persona.apellidoPersona}} Edad: {{persona.edad}}
                </div>
             </div>
             <ng-template #sinPersona>
