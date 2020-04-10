@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { PersonaComponent } from '../persona/persona.component';
+import { Persona } from '../persona.model';
+
 @Component({
     selector: 'app-personas',
     templateUrl: './personas.component.html',
@@ -7,11 +9,12 @@ import { PersonaComponent } from '../persona/persona.component';
 })
 export class PersonasComponent
 {
-    agregarPersona=false;
+     
+     agregarPersona=false;
     personaCreada=false;
     agregarPersonaStatus="No se ha agregado ninguna persona";
     tituloPersona="Ingeniero";
-    arrayPersonas: PersonaComponent[]=[new PersonaComponent("Jhonatan","Zuniga",27), new PersonaComponent("Julieta","Zuniga",4), new PersonaComponent("Maritza","Jimenez",46)];
+    arrayPersonas: Persona[]=[new Persona("Jhonatan","Zuniga",27), new Persona("Julieta","Zuniga",4), new Persona("Maritza","Jimenez",46)];
     nombreInput:string;
     apellidoInput:string;
     edadInput:number;
@@ -23,7 +26,7 @@ export class PersonasComponent
    }
    onAgregarPersona():void
    {
-    let persona1= new PersonaComponent(this.nombreInput,this.apellidoInput,this.edadInput);
+    let persona1= new Persona(this.nombreInput,this.apellidoInput,this.edadInput);
     this.arrayPersonas.push(persona1);
     this.personaCreada=true;
     console.log("HOLA, YA SE AGREGÓ LA PERSONA"+this.nombreInput);

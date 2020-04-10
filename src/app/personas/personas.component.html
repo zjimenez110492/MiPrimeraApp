@@ -10,16 +10,16 @@
             <input type="number" class="form-control" [(ngModel)]="edadInput" placeholder="Introduce Edad">
             <button class="btn btn-primary" [disabled]="!agregarPersona" (click)=onAgregarPersona()>Agregar Persona</button>
             <div *ngIf="personaCreada; else sinPersona">
-                
-               <div *ngFor="let persona of arrayPersonas; let i = index">
-                {{i+1}} Nombre: {{persona.nombrePersona}} {{persona.apellidoPersona}} Edad: {{persona.edad}}
-               </div>
+                <app-persona 
+                *ngFor="let personaElemento of arrayPersonas; let i = index"
+                [persona]="personaElemento"
+                [indice]="i"
+                ></app-persona>
             </div>
             <ng-template #sinPersona>
                 <p>
                     No se ha agregado ninguna Persona!!!!
-                    <img src="https://www.cancioneros.com/fotos/ep010120_1.jpg" class="imagen">
-                    
+                    <img src="https://www.cancioneros.com/fotos/ep010120_1.jpg" class="imagen">                    
                 </p>                
             </ng-template>            
         </div>
