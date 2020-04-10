@@ -1,20 +1,27 @@
-
 <div class="container">
-    <div class ="row">
+    <div class="row">
         <div class="col">
-            <h1>Listado Personas</h1>
-            <label>Nombre Persona</label>
-            <!-- Asociamos la propiedad disabled con una propiedad del .ts, disabled va a depender del valor de agregarPersona que es un atributo-->
-            <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="tituloPersona"            >
             
-            <button class="btn btn-primary" 
-            [disabled]="!agregarPersona"
-            (click)=onCrearPersona()>Agrear Persona</button>
-            {{agregarPersonaStatus}}
-           Persona Ingresada: {{tituloPersona}}
-        </div>        
+            <h1>Listado Personas</h1>
+            <label>Ingresar Persona</label>
+            <!-- Asociamos la propiedad disabled con una propiedad del .ts, disabled va a depender del valor de agregarPersona que es un atributo-->
+            <input type="text" class="form-control" [(ngModel)]="nombreInput" placeholder="Introduce un nombre">
+            <input type="text" class="form-control" [(ngModel)]="apellidoInput" placeholder="Introduce un apellido">
+            <input type="number" class="form-control" [(ngModel)]="edadInput" placeholder="Introduce Edad">
+            <button class="btn btn-primary" [disabled]="!agregarPersona" (click)=onAgregarPersona()>Agregar Persona</button>
+            <div *ngIf="personaCreada; else sinPersona">
+                
+               <div *ngFor="let persona of arrayPersonas; let i = index">
+                  Nombre: {{persona.nombrePersona}} {{persona.apellidoPersona}} Edad: {{persona.edad}}
+               </div>
+            </div>
+            <ng-template #sinPersona>
+                <p>
+                    No se ha agregado ninguna Persona!!!!
+                    <img src="https://www.cancioneros.com/fotos/ep010120_1.jpg" class="imagen">
+                    
+                </p>                
+            </ng-template>            
+        </div>
     </div>
 </div>
